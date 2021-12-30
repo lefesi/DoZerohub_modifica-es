@@ -1,0 +1,22 @@
+/*---------------
+Zerando as configurações do CSS
+--------------- */
+* {
+    padding:0;
+    margin:0;
+    vertical-align:baseline;
+    list-style:none;
+    
+}
+.container-fluid{
+    background-color: #7132bb;
+    overflow: hidden;
+}
+
+#img-bg{
+    background-image: url(../../assets/fale-conosco.png);
+    min-height: 725px;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }

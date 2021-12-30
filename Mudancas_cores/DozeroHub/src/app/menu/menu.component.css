@@ -1,0 +1,33 @@
+.fs-16{
+  font-size: 16pt;
+}
+
+a{
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#menu{
+  background-color:  #b599ee;
+
+}
+
+.text{
+  text-decoration-color: #0E0E2C;
+}
+
+.fa{
+  padding: 1px;
+  color: black;
+}
+
+.fa:hover{
+  color: black;
+  font-size: 20pt ;
+}
+
+li:hover{
+  color: white;
+  font-size: 20pt;
+}
+

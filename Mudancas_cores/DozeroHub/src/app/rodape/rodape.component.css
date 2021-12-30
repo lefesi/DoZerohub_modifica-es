@@ -1,0 +1,55 @@
+/*.footer {
+  left: 0%;
+  position:fixed;
+
+  bottom:0;
+  
+}
+*/
+
+footer{
+  
+}
+
+.row{
+  margin-right: auto;
+}
+
+
+#cor{
+   background-color: #0E0E2C;
+}
+
+
+ul.social-network{
+  list-style: none;
+  padding: 0;
+  right: 0%;
+}
+
+ul.social-network li{
+
+  display: inline;
+  margin: 0;
+  padding: 5px;
+
+}
+
+a:hover{
+  font-size: 15pt;
+}
+
+
+
+
+.fa{
+  font-size: 35pt;
+  color: white;
+  padding: 10px;
+}
+
+.fa-github-square:hover{
+  color: #7132FF;
+}
+
+

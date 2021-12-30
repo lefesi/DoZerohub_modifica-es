@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+:root{
+  --cor-principal: #7132FF ;
+  --cor-secundaria: #0E0E2C ;
+  --cor-rosa: #FF017B ;
+  --cor-verde: #26FF6B ;
+  --cor-azul: #416EDC ;
+  --cor-amarelo: #FEB800 ;
+  --cor-agua: #01EDBB ;
+  --cor-semi-cinza: #50517A ;
+  --cor-preto: #31323A ;
+  --shadow-black-100: 0 5px 15px rgba(0,0,0,0.1);
+  --shadow-black-300: 0 5px 15px rgba(0,0,0,0.3);
+  --black-900: #000000;
+  --black-400: #555555;
+  --black-100: #f7f7f7;
+  --black-000: #ffffff;
+  --black-alpha-100: rgba(0,0,0,0.5);
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+.fs-54{
+  font-size: 54pt;
+}
+
+.fs-18{
+  font-size: 18pt;
+}
+
+

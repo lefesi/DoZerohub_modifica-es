@@ -1,0 +1,218 @@
+<!-- Estilização do menu no componente Menu -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-1 m-0 p-0 mt-0 bgm">
+      <app-menu></app-menu>
+    </div>
+
+    <!--Pagina do feed-->
+    <div class="col-md-8">
+      <div class="container-fluid text-center">
+       
+        <!--Jumbotron-->
+
+        <div class="jumbotron bg-white m-0 p-0">
+          <h1 class="display-4">Sejam bem-vindes!</h1>
+          <p class="lead">A rede social DoZero hub foi desenvolvida com o objetivo de promover o contato entre
+            empreendedores que buscam aprender mais sobre gestão de negócios. Fique a vontade para fazer seu networking!
+          </p>
+          <hr class="my-4">
+          <p></p>
+
+        </div>
+        <!--/Jumbotron-->
+
+      </div>
+
+      <!--Postagens-->
+
+      <div class="container-fluid mb-5 mt-5" id="postagens">
+
+        <!--Tabs-->
+        <ul class="nav nav-pills d-flex justify-content-center mb-3 " id="pills-tab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active btn-dark" id="pills-todasPostagens-tab" data-bs-toggle="pill"
+              data-bs-target="#pills-todasPostagens" type="button" role="tab" aria-controls="pills-todasPostagens"
+              aria-selected="true">Todas as
+              Postagens</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button (click)="findByIdUsuario()" class="nav-link btn-dark" id="pills-minhasPostagens-tab"
+              data-bs-toggle="pill" data-bs-target="#pills-minhasPostagens" type="button" role="tab"
+              aria-controls="pills-minhasPostagens" aria-selected="false">Minhas Postagens</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button (click)="getAllTemas()" class="nav-link btn-dark" id="pills-postagensTema-tab" data-bs-toggle="pill"
+              data-bs-target="#pills-postagensTema" type="button" role="tab" aria-controls="pills-postagensTema"
+              aria-selected="false">Postagens por Tema</button>
+          </li>
+        </ul>
+        <div class="tab-content" id="pills-tabContent">
+          <div class="tab-pane fade show active" id="pills-todasPostagens" role="tabpanel"
+            aria-labelledby="pills-todasPostagens-tab">
+            <div class="mt-3 card text-center" *ngFor="let item of listaPostagens">
+              <div class="row">
+                <div class="m-0 p-0 col-md-2">
+                  <img class="postcardimg" src="{{item.usuario.foto}}" width="100%" height="100%" alt="Image Title" />
+                </div>
+                <div class=" p-0 col-md">
+                  <h5 class="card-header m-0">{{item.titulo}}</h5>
+                  <small class="text-muted">Tema: {{item.tema.descricao}}</small>
+                  <p class="card-text mt-5">{{item.texto}}</p>
+                  <div class="mt-4 card-footer">
+                    <p class=" card-text p-0"><small class="text-muted">Por: {{item.usuario.nome}} no dia
+                        {{item.data | date: 'dd/MM/yyyy'}} às
+                        {{item.data | date: 'HH:mm'}}</small></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="tab-pane fade" id="pills-minhasPostagens" role="tabpanel"
+            aria-labelledby="pills-minhasPostagens-tab">
+            <div class="mt-3 card text-center" *ngFor="let user of user.postagem">
+              <div class="row">
+                <div class="m-0 p-0 col-md-2">
+                  <img class="postcardimg" src="{{foto}}" width="100%" height="100%" alt="Image Title" />
+                </div>
+                <div class=" p-0 col-md">
+                  <h5 class="card-header m-0">{{user.titulo}}</h5>
+                  <small class="text-muted">Tema: {{user.tema.descricao}} dia {{user.data | date: 'dd/MM/yyyy'}} às
+                    {{user.data | date: 'HH:mm'}}</small>
+                  <p class="card-text mt-5">{{user.texto}}</p>
+
+                  <div class="mt-4 card-footer">
+                    <a [routerLink]="['/postagem-edit', user.id]" class="text-info mr-3">Editar</a>
+                    <a [routerLink]="['/postagem-delete', user.id]" class="text-danger">Apagar</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="pills-postagensTema" role="tabpanel" aria-labelledby="pills-postagensTema-tab">
+            <div *ngFor="let tema of listaTemas">
+              <div class="card text-center mt-3" *ngFor="let item of tema.postagem">
+                <div class="row">
+                  <div class=" m-0 p-0 col-md-2">
+                    <img class="postcardimg" src="{{item.usuario.foto}}" width="100%" height="100%" alt="Image Title" />
+                  </div>
+                  <div class="p-0 col-md">
+                    <div class="card-body p-0">
+                      <h5 class="card-header m-0">{{tema.descricao}}</h5>
+                      <p class="card-title m-0">{{item.titulo}}</p>
+                      <p class="card-text mt-5">{{item.texto}}</p>
+                      <div class="mt-4 card-footer">
+                        <p class=" card-text"><small class="text-muted">Por: {{item.usuario.nome}} no dia
+                            {{item.data | date: 'dd/MM/yyyy'}} às
+                            {{item.data | date: 'HH:mm'}}</small></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--/Tabs-->
+
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="novaPostagem" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenterTitle">Nova Postagem</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="titulo">Titulo</label>
+                <input [(ngModel)]="postagem.titulo" type="text" class="form-control" id="titulo"
+                  placeholder="Digite o título">
+              </div>
+              <div class="form-group">
+                <label for="Texto">Texto</label>
+                <textarea [(ngModel)]="postagem.texto" class="form-control" name="texto" id="texto" rows="3"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="Texto">Escolha um Tema <a data-dismiss="modal" routerLink="/tema">Cadastre um
+                    novo</a>:</label>
+                <select name="tema" id="tema" class="form-control" [(ngModel)]="idTema" (change)="findByIdTema()">
+                  <option *ngFor="let item of listaTemas" value="{{item.id}}">{{item.descricao}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+              <button type="button" class="btn btn-success" (click)="publicar()" data-dismiss="modal">Publicar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3 p-0 coluna">
+
+      <!-- Lista de temas cadastrados -->
+      <div class="container p-0">
+
+        <div class="row mt-5">
+          <div class="col-md-12">
+           
+            <h2 class="text-center text-white">Temas</h2>
+          </div>
+        </div>
+
+        <div class="row mt-3 mb-5 d-flex justify-content-center">
+          <div class="col-md-6">
+            <div class="card">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th class="text-center text-secondary" scope="col">Descrição</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor='let tema of listaTemas'>
+                  <td class="text-center">{{tema.descricao}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          </div>
+        </div>
+
+        <!-- Card de informações -->
+        <div class="container md-2 d-flex justify-content-center">
+
+          <div class="card text-center" s tyle="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Portal do EMPREENDEDOR</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Como se regularizar<s></s></h6>
+              <p class="card-text">O site do Portal do empreendedor oferece diversos recursos para você se form.</p>
+              <a href="https://www.gov.br/empresas-e-negocios/pt-br/empreendedor" target="_blank"
+                class="card-link">Saiba Mais</a>
+                <div class="d-flex justify-content-center">
+                  <img  src="../../assets/img-logo2.png" width="90px" height="90px" alt="Imagem Inicio">
+                </div>
+      
+            </div>
+          </div>
+
+        </div>
+
+        <!-- /Card de informações -->
+
+      </div>
+    </div>
+  </div>
+</div>

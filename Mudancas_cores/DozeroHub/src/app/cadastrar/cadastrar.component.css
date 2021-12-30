@@ -1,0 +1,18 @@
+#img-bg{
+  background-image: url('../../assets/img-cadastrar-simples.png');
+
+
+  min-height: 825px;
+  max-height: 826px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.btn{
+  margin-right: 15px;
+}
+.container-fluid{
+  background-color:#9370db;
+  overflow: hidden;
+}
